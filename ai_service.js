@@ -1,6 +1,6 @@
 const AIService = {
     async generateBrief(input, apiKey) {
-        const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+        const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent";
 
         const prompt = `
             You are an expert campaign manager for influencers and marketing agencies.
