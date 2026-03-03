@@ -1,6 +1,6 @@
 const AIService = {
     async generateBrief(input, apiKey) {
-        const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent";
+        const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
         const prompt = `
             You are an expert campaign manager for influencers and marketing agencies.
@@ -40,7 +40,10 @@ const AIService = {
 
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.error?.message || 'API request failed');
+                console.error('Full API Error:', errorData);
+                const msg = errorData.error?.message || 'API request failed';
+                const status = errorData.error?.status || 'UNKNOWN';
+                throw new Error(`[${status}] ${msg}`);
             }
 
             const data = await response.json();
